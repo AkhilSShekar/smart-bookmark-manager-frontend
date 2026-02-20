@@ -1,23 +1,23 @@
 # 🔖 Smart Bookmark Manager
 
-**Smart Bookmark Manager** is a high-performance, full-stack Single Page Application (SPA) designed to serve as your secure personal library for web links. Built with the **MERN** stack and **Clerk**, it offers a sophisticated dashboard to organize your digital life with real-time synchronization.
+**Smart Bookmark Manager** is a high-performance Single Page Application (SPA) designed to serve as your secure personal library for web links. Built with the **MERN** stack and **Clerk**, it offers a sophisticated, centralized dashboard to organize your digital life with real-time synchronization.
 
 ## 🚀 Features
 
-* **Secure User Authentication**: Leverages **Clerk** for robust sign-in/sign-up flows, ensuring your bookmark collection remains private.
-* **Full CRUD Functionality**: Seamlessly create, view, update, and delete bookmarks with an optimized interface.
-* **Intuitive Editing Workflow**: Features an intelligent "Scroll-to-Edit" mechanism that focuses the workspace when modifying entries.
-* **Modern Responsive UI**: A sleek dashboard built with **CSS Glassmorphism** for a premium experience on any device.
-* **Dynamic Data Fetching**: Optimized API communication using a custom **Axios** instance.
+* **Secure User Authentication:** Leverages **Clerk** for robust sign-in/sign-up flows, ensuring your bookmark collection remains private and accessible only to you.
+* **Full CRUD Functionality:** Seamlessly create, view, update, and delete bookmarks with an optimized interface that provides instant feedback.
+* **Intuitive Editing Workflow:** Features an intelligent "Scroll-to-Edit" mechanism that automatically focuses the workspace when modifying existing entries.
+* **Modern Responsive UI:** A sleek, dark-themed dashboard built with **CSS Glassmorphism** and fluid layouts for a premium experience on any device.
+* **Dynamic Data Fetching:** Optimized API communication using a custom **Axios** instance to ensure minimal latency during synchronization.
 
 ## 🛠️ Tech Stack
 
-* **Frontend**: React.js (Hooks, Functional Components)
-* **Backend**: Node.js, Express.js (MERN specialized)
-* **Authentication**: Clerk (Identity Provider)
-* **HTTP Client**: Axios
-* **Styling**: CSS3 (Flexbox, Grid, Glassmorphism)
-* **Deployment**: Vercel
+* **Frontend:** React.js (Hooks, Functional Components)
+* **Backend:** Node.js, Express.js (MERN specialized)
+* **Authentication:** Clerk (Identity Provider)
+* **HTTP Client:** Axios
+* **Styling:** CSS3 (Flexbox, Grid, Glassmorphism)
+* **Deployment:** Vercel
 
 ## 📸 Screenshots
 
@@ -30,8 +30,8 @@
 Follow these steps to run the frontend project locally.
 
 ### Prerequisites
-* Node.js (v14 or higher)
-* npm or yarn
+* **Node.js**: v14 or higher
+* **Package Manager**: npm or yarn
 
 ### Steps
 
@@ -39,31 +39,37 @@ Follow these steps to run the frontend project locally.
    ```bash
    git clone [https://github.com/akhilshekar/smart-bookmark-manager.git](https://github.com/akhilshekar/smart-bookmark-manager.git)
    cd smart-bookmark-manager
-Install Dependencies
 
-Bash
-npm install
-Environment Configuration
-Create a .env file in the root directory and add your keys:
+2. **Install Dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
 
-Code snippet
-VITE_API_URL=[https://smart-bookmark-manager-backend.vercel.app/api/bookmarks](https://smart-bookmark-manager-backend.vercel.app/api/bookmarks)
-VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-Run the Development Server
+3. **Environment Configuration**
+   Create a `.env` file in the root directory and add your keys:
+   ```env
+   VITE_API_URL=[https://smart-bookmark-manager-backend.vercel.app/api/bookmarks](https://smart-bookmark-manager-backend.vercel.app/api/bookmarks)
+   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 
-Bash
-npm run dev
-Open in Browser
-Navigate to http://localhost:5173 to view the app.
+4. **Run the Development Server**
+   ```bash
+   npm run dev
+   # or
+   npm start
 
-🏗️ Architecture Information
-The application follows a modular component-based architecture to ensure scalability.
+5. **Open in Browser**
+   Navigate to `http://localhost:5173` to view the app.
 
-State Management: Utilizes React's useState and useEffect for predictable data flow.
+## 🏗️ Architecture Information
 
-Routing: Integrated with Vercel's rewrite rules to support clean, client-side routing.
+The application follows a modular component-based architecture to ensure scalability and maintainability.
 
-API Layer: Centralized Axios configuration to handle base URLs and environment-specific endpoints.
+* **State Management**: Utilizes React's `useState` and `useEffect` for predictable data flow and component lifecycle management.
+* **Routing**: Integrated with Vercel's rewrite rules to support clean, client-side routing for SPA performance.
+* **API Layer**: Centralized Axios configuration to handle base URLs and environment-specific endpoints.
 
-👨‍💻 Developer
-Akhil S Shekar
+## 👨‍💻 Developer
+
+**Akhil S Shekar**
+* **Specialization**: MERN Stack (MongoDB, Express.js, React, Node.js)
