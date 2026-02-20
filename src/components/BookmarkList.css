@@ -1,0 +1,15 @@
+.bookmark-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}

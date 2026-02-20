@@ -1,0 +1,47 @@
+.card {
+    background: var(--bg-accent);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(129, 140, 248, 0.3);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+}
+
+.card-info a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.edit-btn { background: rgba(234, 179, 8, 0.1); color: #facc15; }
+.delete-btn { background: rgba(239, 68, 68, 0.1); color: #f87171; }
+
+.edit-btn:hover { background: #eab308; color: white; }
+.delete-btn:hover { background: #dc2626; color: white; }
