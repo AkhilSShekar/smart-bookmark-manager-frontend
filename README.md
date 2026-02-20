@@ -1,16 +1,65 @@
-# React + Vite
+Smart Bookmark Manager
+A sleek, full-stack e-commerce-style bookmarking application built with the MERN stack. This tool allows users to securely save, organize, and manage their favorite web links with a modern, dark-themed user interface.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Features
+Secure Authentication: Integrated with Clerk for seamless user sign-in and protected dashboard access.
 
-Currently, two official plugins are available:
+Full CRUD Operations: Create, Read, Update, and Delete bookmarks with real-time state updates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Modern UI/UX: Responsive design featuring glassmorphism, CSS variables, and smooth animations.
 
-## React Compiler
+Smooth Navigation: Automatic scrolling to the form when editing a bookmark for better usability.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+API Integration: Pre-configured Axios instance for communicating with a Vercel-hosted backend.
 
-## Expanding the ESLint configuration
+🛠️ Tech Stack
+Frontend: React.js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Styling: CSS3 with Flexbox/Grid and Google Fonts (Inter)
+
+Authentication: Clerk
+
+HTTP Client: Axios
+
+Deployment: Vercel
+
+📂 Project Structure
+Plaintext
+src/
+├── api/
+│   └── axios.js          # API configuration
+├── components/
+│   ├── BookmarkCard.jsx  # Individual bookmark display
+│   ├── BookmarkForm.jsx  # Logic for Adding/Editing
+│   └── BookmarkList.jsx  # Grid layout for bookmarks
+├── App.jsx               # Main application logic
+├── main.jsx              # Entry point & Clerk Provider
+└── index.css             # Global resets
+⚙️ Setup Instructions
+Clone the repository
+
+Install dependencies:
+
+Bash
+npm install
+Environment Variables:
+Create a .env file in the root directory and add your credentials:
+
+Code snippet
+VITE_API_URL=https://smart-bookmark-manager-backend.vercel.app/api/bookmarks
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key_here
+Run the application:
+
+Bash
+npm run dev
+🌐 Deployment
+The project is configured for easy deployment on Vercel. The included vercel.json ensures that all frontend routes are correctly rewritten to the root to support SPA navigation.
+
+📝 Author
+Akhil S Shekar
+
+2025 Graduate
+
+Full Stack Developer specializing in the MERN stack
+
+Would you like me to add a section on how to contribute or include specific API documentation for the backend endpoints?
