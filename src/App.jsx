@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton, useClerk } from "@clerk/clerk-react";
 import { useState, useEffect } from 'react';
 import axios from './api/axios';
 import BookmarkForm from './components/BookmarkForm';
@@ -7,51 +7,49 @@ import './App.css';
 
 function App() {
     const { signOut } = useClerk();
-    const { getToken, isSignedIn } = useAuth(); // Hook to get secure token
     const [bookmarks, setBookmarks] = useState([]);
     const [editingBookmark, setEditingBookmark] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const fetchBookmarks = async () => {
-        if (!isSignedIn) return;
         try {
             setLoading(true);
-            const token = await getToken();
-            const res = await axios.get('/', {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            const res = await axios.get('/');
             setBookmarks(res.data);
         } catch (error) {
-            console.error("Error fetching:", error);
+            console.error("Fetch error:", error);
         } finally {
             setLoading(false);
         }
     };
 
     const addBookmark = async (data) => {
-        const token = await getToken();
-        await axios.post('/', data, {
-            headers: { Authorization: `Bearer ${token}` }
-        });
-        fetchBookmarks();
+        try {
+            await axios.post('/', data);
+            fetchBookmarks();
+        } catch (error) {
+            console.error("Add error:", error);
+        }
     };
 
     const updateBookmark = async (id, data) => {
-        const token = await getToken();
-        await axios.put(`/${id}`, data, {
-            headers: { Authorization: `Bearer ${token}` }
-        });
-        setEditingBookmark(null);
-        fetchBookmarks();
+        try {
+            await axios.put(`/${id}`, data);
+            setEditingBookmark(null);
+            fetchBookmarks();
+        } catch (error) {
+            console.error("Update error:", error);
+        }
     };
 
     const deleteBookmark = async (id) => {
-        if (window.confirm("Delete?")) {
-            const token = await getToken();
-            await axios.delete(`/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            fetchBookmarks();
+        if (window.confirm("Are you sure you want to delete this bookmark?")) {
+            try {
+                await axios.delete(`/${id}`);
+                fetchBookmarks();
+            } catch (error) {
+                console.error("Delete error:", error);
+            }
         }
     };
 
@@ -61,16 +59,17 @@ function App() {
     };
 
     useEffect(() => {
-        if (isSignedIn) fetchBookmarks();
-    }, [isSignedIn]);
+        fetchBookmarks();
+    }, []);
 
     return (
         <div className="container">
             <SignedOut>
                 <div className="login-page">
                     <h1>Smart Bookmark Manager</h1>
+                    <p>Securely organize your favorite links.</p>
                     <SignInButton mode="modal">
-                        <button className="login-btn">Sign In to Dashboard</button>
+                        <button className="login-btn">Get Started</button>
                     </SignInButton>
                 </div>
             </SignedOut>
@@ -79,18 +78,31 @@ function App() {
                 <header className="app-header">
                     <div>
                         <h1>Smart Bookmark Manager</h1>
-                        <p className="subtitle">Your private collection</p>
+                        <p className="subtitle">Welcome back to your dashboard</p>
                     </div>
                     <div className="header-actions">
-                        <button className="logout-btn" onClick={() => signOut({ redirectUrl: '/' })}>Logout</button>
+                        <button className="logout-btn" onClick={() => signOut({ redirectUrl: '/' })}>
+                            Logout
+                        </button>
                         <UserButton afterSignOutUrl="/" />
                     </div>
                 </header>
 
                 <main>
-                    <BookmarkForm onAdd={addBookmark} onUpdate={updateBookmark} editingBookmark={editingBookmark} />
-                    {loading ? <div className="loader">Loading...</div> : 
-                    <BookmarkList bookmarks={bookmarks} onDelete={deleteBookmark} onEdit={handleEditClick} />}
+                    <BookmarkForm 
+                        onAdd={addBookmark} 
+                        onUpdate={updateBookmark} 
+                        editingBookmark={editingBookmark} 
+                    />
+                    {loading ? (
+                        <div className="loader">Syncing links...</div>
+                    ) : (
+                        <BookmarkList 
+                            bookmarks={bookmarks} 
+                            onDelete={deleteBookmark} 
+                            onEdit={handleEditClick} 
+                        />
+                    )}
                 </main>
             </SignedIn>
         </div>
